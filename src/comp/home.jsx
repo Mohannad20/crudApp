@@ -22,8 +22,7 @@ const Home = () => {
   };
 
   const handleView = (id) => {
-    // Implement view logic
-    console.log('View user', id);
+    navigate(`/view/${id}`);
   };
 
   const handleEdit = (id) => {

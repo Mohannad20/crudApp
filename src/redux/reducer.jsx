@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  items: []
+  items: [
+    { id: '1', name: 'John Doe', username: 'johndoe', email: 'john@example.com' },
+    { id: '2', name: 'Jane Smith', username: 'janesmith', email: 'jane@example.com' },
+    { id: '3', name: 'Bob Johnson', username: 'bobjohnson', email: 'bob@example.com' }
+  ]
 };
 
 const itemsSlice = createSlice({
@@ -22,9 +26,12 @@ const itemsSlice = createSlice({
       if (index !== -1) {
         state.items[index] = { ...state.items[index], ...action.payload };
       }
+    },
+    deleteItem: (state, action) => {
+      state.items = state.items.filter(item => item.id !== action.payload);
     }
   }
 });
 
-export const { addItem, editItem, updateItem } = itemsSlice.actions;
+export const { addItem, editItem, updateItem, deleteItem } = itemsSlice.actions;
 export default itemsSlice.reducer;
