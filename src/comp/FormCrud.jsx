@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateItem } from '../redux/reducer';
 
@@ -8,6 +8,7 @@ const FormCrud = () => {
   const dispatch = useDispatch();
   const item = useSelector(state => state.items.items.find(item => item.id === id));
   const [formData, setFormData] = useState({ name: '', username: '', email: '' });
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (item) {
@@ -62,6 +63,7 @@ const FormCrud = () => {
         <button
           type="submit"
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          onClick={() => navigate('/')}
         >
           Save
         </button>
