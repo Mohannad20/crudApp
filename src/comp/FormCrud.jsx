@@ -26,21 +26,47 @@ const FormCrud = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name</label>
-        <input type="text" name="name" value={formData.name} onChange={handleChange} />
-      </div>
-      <div>
-        <label>Username</label>
-        <input type="text" name="username" value={formData.username} onChange={handleChange} />
-      </div>
-      <div>
-        <label>Email</label>
-        <input type="email" name="email" value={formData.email} onChange={handleChange} />
-      </div>
-      <button type="submit">Save</button>
-    </form>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Edit Item</h1>
+      <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md">
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">Username</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Save
+        </button>
+      </form>
+    </div>
   );
 };
 
