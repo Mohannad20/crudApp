@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   Table,
   TableBody,
@@ -11,14 +13,12 @@ import {
 } from "@/components/ui/table";
 
 const Home = () => {
-  const [users, setUsers] = useState([
-    { id: 1, name: 'John Doe', username: 'johndoe', email: 'john@example.com' },
-    { id: 2, name: 'Jane Smith', username: 'janesmith', email: 'jane@example.com' },
-    // Add more users as needed
-  ]);
+  const users = useSelector(state => state.items.items);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleDelete = (id) => {
-    setUsers(users.filter(user => user.id !== id));
+    dispatch({ type: 'DELETE_USER', payload: id });
   };
 
   const handleView = (id) => {
@@ -27,8 +27,7 @@ const Home = () => {
   };
 
   const handleEdit = (id) => {
-    // Implement edit logic
-    console.log('Edit user', id);
+    navigate(`/form/${id}`);
   };
 
   return (

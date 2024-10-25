@@ -1,21 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './comp/navbar';
 import Home from './comp/home';
-// import Button from './components/ui/button';
+import FormCrud from './comp/FormCrud';
 
-
-
-function App() {
+const App = () => {
   return (
-    <Router>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" component={<Home/>} />
-          <Route path="/add" component={<FormCrud/>} />
-        </Routes>
-    </Router>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/form/:id" element={<FormCrud />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
